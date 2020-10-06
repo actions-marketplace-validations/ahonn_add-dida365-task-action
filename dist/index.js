@@ -2958,6 +2958,7 @@ const STATUS_TEXTS = {
 
 "use strict";
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -3002,7 +3003,17 @@ function run() {
             validateInput('emailOrPhone');
             validateInput('password');
             validateInput('task');
-            const browser = yield puppeteer_1.default.launch();
+            const browser = yield puppeteer_1.default.launch({
+                executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+                args: [
+                    // Required for Docker version of Puppeteer
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    // This will write shared memory files into /tmp instead of /dev/shm,
+                    // because Docker’s default for /dev/shm is 64MB
+                    '--disable-dev-shm-usage'
+                ]
+            });
             const page = yield browser.newPage();
             yield page.goto('https://dida365.com/signin');
             yield page.focus('#emailOrPhone');

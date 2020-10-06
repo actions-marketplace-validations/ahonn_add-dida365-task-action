@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import * as core from '@actions/core'
 import puppeteer from 'puppeteer'
 
@@ -11,7 +13,17 @@ async function run(): Promise<void> {
     validateInput('password')
     validateInput('task')
 
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+      args: [
+        // Required for Docker version of Puppeteer
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        // This will write shared memory files into /tmp instead of /dev/shm,
+        // because Docker’s default for /dev/shm is 64MB
+        '--disable-dev-shm-usage'
+      ]
+    })
     const page = await browser.newPage()
     await page.goto('https://dida365.com/signin')
 

@@ -1,6 +1,6 @@
 {
   "name": "add-dida365-task-action",
-  "version": "0.1.0",
+  "version": "0.3.4",
   "description": "add new Dida365 task during a GitHub Actions workflow.",
   "main": "lib/main.js",
   "scripts": {
