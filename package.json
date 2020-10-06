@@ -1,8 +1,7 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
-  "private": true,
-  "description": "TypeScript template action",
+  "name": "add-dida365-task-action",
+  "version": "0.1.0",
+  "description": "add new Dida365 task during a GitHub Actions workflow.",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -13,14 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/ahonn/add-dida365-task-action.git"
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "",
+  "author": "yuexunjiang <yuexunjiang@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6",
