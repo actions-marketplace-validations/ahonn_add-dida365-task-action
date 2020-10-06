@@ -1,11 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Add Dida365 Task Action'
+description: 'add new Dida365 task during a GitHub Actions workflow.'
+author: 'Yuexun Jiang'
 inputs:
-  milliseconds: # change this
+  emailOrPhone:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Dida365 account email or phone'
+  password:
+    required: true
+    description: 'Dida365 account password'
+  task:
+    required: true
+    description: 'The task title'
 runs:
   using: 'node12'
   main: 'dist/index.js'
